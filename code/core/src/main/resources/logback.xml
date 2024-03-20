@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration scan="true">
+    <property name="LOG_FILE" value="${APPLICATION_LOG_PATH}/picollo-core.log" />
+    <property name="LOG_FILE_MAX_HISTORY" value="${APPLICATION_LOGGING_FILE_MAX_HISTORY}"/>
+    <property name="LOG_FILE_MAX_SIZE" value="${APPLICATION_LOG_FILE_MAX_SIZE}"/>
+
+    <include resource="org/springframework/boot/logging/logback/base.xml"/>
+    <root level="INFO">
+        <appender-ref ref="CONSOLE" />
+        <appender-ref ref="FILE" />
+    </root>
+    <logger name="org.picollo" level="info" />
+    <logger name="org.springframework" level="info" />
+</configuration>

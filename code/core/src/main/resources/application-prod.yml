@@ -1,0 +1,8 @@
+application:
+    core-modules: ./core-modules
+    custom-modules: ./custom-modules
+    deployment-directory: ./deploy
+management:
+    endpoint:
+        shutdown:
+            enabled: true

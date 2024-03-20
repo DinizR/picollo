@@ -1,0 +1,35 @@
+server:
+    port: 8080
+#    ssl:
+#        enabled: false
+#        key-store: classpath:keystore.p12
+#        key-store-password: qwe123
+#        keyStoreType: PKCS12
+#        keyAlias: tomcat
+spring:
+    endpoints:
+        shutdown:
+            enabled: true
+    banner:
+        location: classpath:picollo.txt
+application:
+    deployment-directory: ./deploy
+    core-modules: ./core-modules
+    service-modules: ./service-modules
+    custom-modules: ./custom-modules
+management:
+    endpoint:
+        shutdown:
+            enabled: true
+    endpoints:
+        web:
+            exposure:
+                include: ["shutdown", "health", "info", "modules", "deploy"]
+    health:
+        ldap:
+            enabled: false
+info:
+    app:
+        name: Picollo Non-Stop Integration Framework
+        description: Picollo Core Instance
+        version: 1.0.0

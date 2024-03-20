@@ -1,0 +1,4 @@
+application:
+    core-modules: ./core-modules
+    custom-modules: ./custom-modules
+    deployment-directory: ./deploy
