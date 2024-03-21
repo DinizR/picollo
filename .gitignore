@@ -1,0 +1,68 @@
+# Eclipse
+.classpath
+.project
+.settings/
+
+# Intellij
+.idea/
+*.iml
+*.iws
+
+# Mac
+.DS_Store
+
+# Maven
+log/
+target/
+
+# Spring Boot specific
+/target/
+/build/
+/bin/
+/.mvn/
+!.mvn/wrapper/maven-wrapper.jar  # Allow the Maven wrapper
+
+# IDE files
+.idea/
+*.iml
+*.ipr
+*.iws
+*.classpath
+*.project
+
+# Logs
+/log/
+*.log
+
+# Compiled Java classes
+*.class
+
+# Package files
+*.jar
+*.war
+*.ear
+*.zip
+
+# Dependency directories
+/target/
+/lib/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Contact Gateway
+logs/
+*.jar
+felix-cache/
+storage/
+core-modules/
+output/
+*.class
+*.exe
+*.ear
+*.war
+*.obj
+
+# unix processes
+*.pid
