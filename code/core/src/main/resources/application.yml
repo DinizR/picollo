@@ -1,11 +1,5 @@
 server:
     port: 8080
-#    ssl:
-#        enabled: false
-#        key-store: classpath:keystore.p12
-#        key-store-password: qwe123
-#        keyStoreType: PKCS12
-#        keyAlias: tomcat
 spring:
     endpoints:
         shutdown:
