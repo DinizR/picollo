@@ -78,9 +78,8 @@ public class DeployProcessor {
 
    @PostMapping("/modules/deploy/multiple")
    public List<UploadFileResponse> uploadMultipleFiles(@RequestParam("files") MultipartFile[] files) {
-      return Arrays.asList(files)
-         .stream()
-         .map(file -> uploadFile(file))
+      return Arrays.stream(files)
+         .map(this::uploadFile)
          .collect(Collectors.toList());
    }
 

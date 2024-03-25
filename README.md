@@ -10,3 +10,15 @@ The roadmap for Picollo aims to transform it into a highly available and scalabl
 ## Features
 
 ## Usage
+
+To start using Picollo platform execute the following steps:
+1. Clone the Picollo source code from here: https://github.com/DinizR/picollo.git
+2. Clone the Picollo drivers level 0 from here: https://github.com/DinizR/picollo-driver-level0.git
+3. Clone the Picollo drivers level 1 from here: https://github.com/DinizR/picollo-driver-level1.git
+4. Clone the timer drivers implementation from here: https://github.com/DinizR/picollo-timer-drivers.git
+
+The item 4 is optional, only take it if you want to use the timer drivers functionality.
+
+
+
+
