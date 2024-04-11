@@ -6,7 +6,6 @@ It combines the ease of development of production-grade Spring-based application
 
 The roadmap for Picollo aims to transform it from a single node execution module into a highly available and scalable platform for developing nano modules. The term "nano modules" describes the capability to deploy business logic in small, granular modules, seamlessly integrated into the Picollo service in a non-stop manner.
 
-
 ## Features
 The picture below presents Picollo's node components that are part of its architecture:
 
