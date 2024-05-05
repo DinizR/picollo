@@ -1,16 +1,15 @@
 # Picollo Integration Core Module
 
-Picollo is a modular solution designed for systems integration, built on open-source Java-based SpringBoot and Spring frameworks.
+Picollo is a modular solution designed for systems integration, built on open-source Java-based SpringBoot and Spring frameworks (*1).
 
 It combines the ease of development of production-grade Spring-based applications with the flexibility of a modular dynamic engine. This fusion of SpringBoot with dynamic modules empowers Picollo to deploy components and configurations at runtime, making it a continuously available service. Hence, Picollo is often referred to as "Picollo the non-stop service", serving both systems integration and microservices creation needs.
 
-The roadmap for Picollo aims to transform it from a single node execution module into a highly available and scalable platform for developing nano modules. The term "nano modules" describes the capability to deploy business logic in small, granular modules, seamlessly integrated into the Picollo service in a non-stop manner.
+The roadmap for Picollo aims to transform it from a single node execution module into a highly available and scalable platform for developing nano modules (integration interfaces or microservices). The term "nano modules" describes the capability to deploy business logic in small, granular modules, seamlessly integrated into the Picollo service in a non-stop manner.
 
+(*1): The substrate to run Picollo is SpringBoot nowadays, however it may have another variants in the future with Quarkus and other lightweight options. 
 
 ## Features
 The picture below presents Picollo's node components that are part of its architecture:
-
-P.S.: it is called Picollo's node because you can have many nodes of Picollo with different configurations and nano modules running together (not as a cluster yet, this is another plan in the road map).
 
 ![Picollo Architecture](./code/docs/Picollo-Components.png)
 
@@ -23,12 +22,12 @@ The Picollo Foundation is the basic framework structure for the entire backend s
 
 The Picollo Foundation is composed of the following internal components:
 
-- SpringBoot
+- Substrate
 - Basic Utilities
 - Dynamic Modules Engine
 
-SpringBoot is an open-source Java framework used to create Microservices (In the road map Picollo to support Quarkus). On top of SpringBoot we have the Basic Utilities and Dynamic Module Engine.
-The Basic Utilities module is where the core basic most important functionalities are located, in the picture you can see we have the Deployer and REST API functionalities, they are responsible for deploying nano modules and offer a RESTful API to manage the Picollo node.
+The Substrate is implemented with SpringBoot which is an open-source Java framework used to create Microservices (In the Picollo's development road map it should support also Quarkus). On top of the Substrate we have the Basic Utilities and Dynamic Module Engine.
+The Basic Utilities module is where the core basic most important functionalities are located, in the picture you can see we have the Deployer and REST API functionalities. These are responsible for deploying nano modules and offer a RESTful API to manage the Picollo node respectively.
 Dynamic Modules Engine is the modular system for Java that provides the ability to support a pluggable architecture of hot swap modules. 
 
 On top of the Picollo Foundation we find the Picollo Hot Pluggable Modules, where the following internal components are:
@@ -37,12 +36,12 @@ On top of the Picollo Foundation we find the Picollo Hot Pluggable Modules, wher
 - Driver Level 1
 - Nano Modules
 
-The Driver Level 0 provides the dynamic interfaces Driver Interface and Configurable Interface. The first is to provide a generic driver hook whereas the second supplies the configuration interface responsible for the nano module properties.
-Regarding the Driver Level 1, it is an implementation of the level 0, bringing higher level horizontal backend interfaces based on the hexagonal architecture.
-The hexagonal architecture, as we know, has business model in the core and adapters to interact with the external systems. On the Driver Level 1 the Timer, Sync Business, and Async Business are interfaces for implementing the business model whereas the Adapter Interface, as the name says, is used as adapter for external I/O. 
+The Driver Level 0 provides the dynamic interfaces Driver Interface, Credential Manager and Configurable Interface. The first is to provide a generic driver hook whereas the second provides configurable vault for credentials, and the last supplies the configuration interface responsible for the nano module configuration properties.
+Regarding the Driver Level 1, it is an implementation of the level 0, bringing higher level horizontal backend interfaces based on the hexagonal architecture (https://en.wikipedia.org/wiki/Hexagonal_architecture_(software)).
+The hexagonal architecture, as we know, has business model in the core and adapters to interact with the external systems. On the Driver Level 1 the Timer, Sync Business, and Async Business are interfaces for implementing the business model whereas the Adapter Interface, as the name says, is used as adapter for external system interactions (I/O). 
 For more details about the Driver Level 1 see the wiki documentation.
 
-Finally, the top level components are the Nano Modules. They are dynamic business and I/O adapter modules included in runtime into the Picollo node. Here is where the logic is customized, processed, data is read, transformed, and written. The picture presents the following custom modules:
+Finally, the top level components are the Nano Modules. They are dynamic business and I/O adapter modules included in runtime into the Picollo node. Here is where the logic is customized, processed, data is read, transformed, and written. The picture presents the following dummy custom modules:
 
 - Mock Timer
 - Sync Payments
@@ -50,7 +49,7 @@ Finally, the top level components are the Nano Modules. They are dynamic busines
 - SOAP Adapter
 
 The Mock Timer is a dummy module processing timer batch processes, it implements the Timer Interface on Driver Level 1 layer.  
-The Sync Payments is a business logic module to process payments created here as a sample scenario. In this scenario, the Sync Payment module receives payments from a system (SAP for instance) through a RESTful API, using the REST Adapter to connect and fetch data the system. After fetching the data it is processed by the Sync Payment module which will use the SOAP Adapter to send the processed payment to the Accounting System (Another SAP module for instance) using the SOAP Adapter.    
+The Sync Payments is a dummy business logic module to process payments created here as a sample scenario. In this scenario, the Sync Payment module receives payments from a system (SAP for instance) through a RESTful API, using the REST Adapter to connect and fetch data the system. After fetching the data it is processed by the Sync Payment module which will use the SOAP Adapter to send the processed payment to the Accounting System (Another SAP module for instance) using the SOAP Adapter.    
 
 ## Folder structure
 
