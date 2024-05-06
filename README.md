@@ -1,6 +1,6 @@
 # Picollo Integration Core Module
 
-Picollo is a modular solution designed for systems integration, built on open-source Java-based SpringBoot and Spring frameworks (*1).
+Picollo is a modular solution designed for systems integration and microservices development, built on open-source Java-based SpringBoot and Spring frameworks (*1).
 
 It combines the ease of development of production-grade Spring-based applications with the flexibility of a modular dynamic engine. This fusion of SpringBoot with dynamic modules empowers Picollo to deploy components and configurations at runtime, making it a continuously available service. Hence, Picollo is often referred to as "Picollo the non-stop service", serving both systems integration and microservices creation needs.
 
