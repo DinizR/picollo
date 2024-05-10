@@ -2,9 +2,9 @@
 
 Picollo is a modular solution designed for systems integration and microservices development, built on open-source Java-based SpringBoot and Spring frameworks (*1).
 
-It combines the ease of development of production-grade Spring-based applications with the flexibility of a modular dynamic engine. This fusion of SpringBoot with dynamic modules empowers Picollo to deploy components and configurations at runtime, making it a continuously available service. Hence, Picollo is often referred to as "Picollo the non-stop service", serving both systems integration and microservices creation needs.
+It combines the ease of development of production-grade Spring-based applications with the flexibility of a modular dynamic engine. This modularization provides a faster time to market, as the reuse of support and business modules brings increased productivity in application development. The fusion of SpringBoot with dynamic modules empowers Picollo to deploy components and configurations at runtime, making it a continuously available service. Hence, Picollo is often referred to as "Picollo the non-stop service", serving both systems integration and microservices creation needs.
 
-The roadmap for Picollo aims to transform it from a single node execution module into a highly available and scalable platform for developing nano modules (integration interfaces or microservices). The term "nano modules" describes the capability to deploy business logic in small, granular modules, seamlessly integrated into the Picollo service in a non-stop manner.
+The roadmap for Picollo aims to transform it from a single node execution module into a highly available and scalable platform for developing **Pico Modules** (integration interfaces or microservices). The term "Pico Modules" describes the capability to deploy business logic in small, granular modules, seamlessly integrated into the Picollo service in a non-stop manner (hot pluggable modules).
 
 (*1): The substrate to run Picollo is SpringBoot nowadays, however it may have another variants in the future with Quarkus and other lightweight options. 
 
@@ -18,7 +18,7 @@ In the Picollo's layered architecture the following high-level components are pr
 - Picollo Foundation
 - Picollo Hot Pluggable Modules
 
-The Picollo Foundation is the basic framework structure for the entire backend solution, and the Picollo Hot Pluggable Modules are modules in many levels responsible for the dynamic interfaces and business implementations (nano modules). 
+The Picollo Foundation is the basic framework structure for the entire backend solution, and the Picollo Hot Pluggable Modules are modules in many levels responsible for the dynamic interfaces and business implementations (pico modules). 
 
 The Picollo Foundation is composed of the following internal components:
 
@@ -27,21 +27,21 @@ The Picollo Foundation is composed of the following internal components:
 - Dynamic Modules Engine
 
 The Substrate is implemented with SpringBoot which is an open-source Java framework used to create Microservices (In the Picollo's development road map it should support also Quarkus). On top of the Substrate we have the Basic Utilities and Dynamic Module Engine.
-The Basic Utilities module is where the core basic most important functionalities are located, in the picture you can see we have the Deployer and REST API functionalities. These are responsible for deploying nano modules and offer a RESTful API to manage the Picollo node respectively.
+The Basic Utilities module is where the core basic most important functionalities are located, in the picture you can see we have the Deployer and REST API functionalities. These are responsible for deploying pico modules and offer a RESTful API to manage the Picollo node respectively.
 Dynamic Modules Engine is the modular system for Java that provides the ability to support a pluggable architecture of hot swap modules. 
 
 On top of the Picollo Foundation we find the Picollo Hot Pluggable Modules, where the following internal components are:
 
 - Driver Level 0
 - Driver Level 1
-- Nano Modules
+- Pico Modules
 
-The Driver Level 0 provides the dynamic interfaces Driver Interface, Credential Manager and Configurable Interface. The first is to provide a generic driver hook whereas the second provides configurable vault for credentials, and the last supplies the configuration interface responsible for the nano module configuration properties.
+The Driver Level 0 provides the dynamic interfaces Driver Interface, Credential Manager and Configurable Interface. The first is to provide a generic driver hook whereas the second provides configurable vault for credentials, and the last supplies the configuration interface responsible for the pico module configuration properties.
 Regarding the Driver Level 1, it is an implementation of the level 0, bringing higher level horizontal backend interfaces based on the hexagonal architecture (https://en.wikipedia.org/wiki/Hexagonal_architecture_(software)).
 The hexagonal architecture, as we know, has business model in the core and adapters to interact with the external systems. On the Driver Level 1 the Timer, Sync Business, and Async Business are interfaces for implementing the business model whereas the Adapter Interface, as the name says, is used as adapter for external system interactions (I/O). 
 For more details about the Driver Level 1 see the wiki documentation.
 
-Finally, the top level components are the Nano Modules. They are dynamic business and I/O adapter modules included in runtime into the Picollo node. Here is where the logic is customized, processed, data is read, transformed, and written. The picture presents the following dummy custom modules:
+Finally, the top level components are the Pico Modules. They are dynamic business and I/O adapter modules included in runtime into the Picollo node. Here is where the logic is customized, processed, data is read, transformed, and written. The picture presents the following dummy custom modules:
 
 - Mock Timer
 - Sync Payments
@@ -108,7 +108,7 @@ Now to open the Picollo project and run the Picollo Foundation follow the steps:
 7. You should see this on your IntelliJ Run view: ![](./code/docs/run-step3.png)
 
 Now that the Picollo Foundation running, lets build and install the Picollo Hot Pluggable Modules.
-To install and run the Mock Timer nano module, do the following:
+To install and run the Mock Timer pico module, do the following:
 
 1. On IntelliJ, select the menu File --> Open...
 2. Navigate to the "picollo-driver-level0" directory
@@ -136,7 +136,7 @@ Now we go to the level 1 of interfaces, follow the steps to build and install "p
 4. After selecting click on "Run Maven Build" button (the green one on top of Maven View)
 5. You should see the modules built on the Run view of IntelliJ, like this: ![](./code/docs/run-step7.png)
 
-Finally, we are going to deploy a nano module to understand how modules are deployed on Picollo on runtime. Follow the steps:
+Finally, we are going to deploy a pico module to understand how modules are deployed on Picollo on runtime. Follow the steps:
 
 1. Open your IntelliJ window with "picollo-timer-drivers" project
 2. Select the Maven view on IntelliJ on the right panel, like this: ![](./code/docs/run-step8.png)
@@ -144,7 +144,7 @@ Finally, we are going to deploy a nano module to understand how modules are depl
 4. After selecting click on "Run Maven Build" button (the green one on top of Maven View)
 5. You should see the modules built on the Run view of IntelliJ, like this: ![](./code/docs/run-step9.png)
 
-Now that the nano module is build lets deploy it in Picollo's node. Just follow:
+Now that the pico module is build lets deploy it in Picollo's node. Just follow:
 
 1. Open your IntelliJ window with "picollo" project
 2. If Picollo is not running, then run it just clicking "Run 'Picollo'" in the top toolbar. ![](./code/docs/run-step10.png)
@@ -159,7 +159,7 @@ Now that the nano module is build lets deploy it in Picollo's node. Just follow:
 
 The mock timer is only a small piece of code to test the timer functionality. You will see logs of it being generated on your Run view, where it is going to put a counter from 0 to 14 every minute.
 
-It is also very important to mention that before deploying Nano modules, such as the Timer Mock described before, a configuration file need to be included in the "code"->"config" folder. Luckily for the Mock Timer there is already one there.
+It is also very important to mention that before deploying Pico modules, such as the Timer Mock described before, a configuration file need to be included in the "code"->"config" folder. Luckily for the Mock Timer there is already one there.
 Remember, the name of your configuration file MUST be the same name of the driver without the versioning. 
 
 *For instance: mock-timer-1.1.0.jar is going to have a configuration named mock-timer.properties.*
