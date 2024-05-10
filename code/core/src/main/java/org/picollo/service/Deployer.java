@@ -3,12 +3,11 @@
  */
 package org.picollo.service;
 
-import org.cobra.timer.api.TimerSupplierInterface;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleException;
 import org.osgi.framework.Constants;
 import org.picollo.config.service.OSGiConfig;
-import org.picollo.context.CobraContext;
+import org.picollo.context.PicolloContext;
 import org.picollo.driver.DriverInterface;
 import org.picollo.driver.DriverState;
 import org.picollo.driver.DriverType;
@@ -82,7 +81,7 @@ public class Deployer {
                                 destination = serviceModules;
                             }
                             if (b.isPresent()) {
-                                driver = CobraContext.getDriver(b.get().getSymbolicName());
+                                driver = PicolloContext.getDriver(b.get().getSymbolicName());
 
                                 if (driver.isPresent()) {
                                     while (driver.get().getState() == DriverState.RUNNING) {
@@ -213,7 +212,8 @@ public class Deployer {
 
     @PreDestroy
     public void finish() {
-        TimerSupplierInterface.stop();
+        // todo: study a way to use a higher interface to stop drivers.
+//        TimerSupplierInterface.stop();
     }
 
     private String checkProperty(String var, String checkKey) {
