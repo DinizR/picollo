@@ -212,8 +212,8 @@ public class Deployer {
 
     @PreDestroy
     public void finish() {
-        // todo: study a way to use a higher interface to stop drivers.
-//        TimerSupplierInterface.stop();
+        PicolloContext.installedDrivers.values()
+            .forEach(driver -> driver.stop());
     }
 
     private String checkProperty(String var, String checkKey) {

@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>core</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
@@ -53,7 +53,7 @@
         <dependency>
             <groupId>org.picollo</groupId>
             <artifactId>driver-interface</artifactId>
-            <version>1.1.0</version>
+            <version>1.0.1</version>
         </dependency>
         <dependency>
             <groupId>ch.qos.logback</groupId>
