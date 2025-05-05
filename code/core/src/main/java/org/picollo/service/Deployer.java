@@ -64,7 +64,7 @@ public class Deployer {
         try {
             try (Stream<Path> stream = Files.list(Paths.get(deployDirectory))) {
                 stream
-                    .filter(i -> ! i.toString().contains("README.md"))
+                    .filter(i -> ! i.toString().contains("README.md") && ! i.toString().contains(".DS_Store"))
                     .forEach(i -> {
                         final String destination;
                         final Optional<Bundle> b;
